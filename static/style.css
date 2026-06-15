@@ -26,7 +26,6 @@ h1 {
     margin-bottom: 30px;
 }
 
-/* Formularios */
 .filter-form {
     display: flex;
     gap: 15px;
@@ -47,7 +46,6 @@ h1 {
     font-size: 16px;
 }
 
-/* Botones */
 .btn {
     padding: 10px 20px;
     border: none;
@@ -65,7 +63,6 @@ h1 {
 .btn-save { background-color: var(--primary-color); color: white; }
 .btn-cancel { background-color: #94a3b8; color: white; text-align: center; }
 
-/* Dashboard */
 .dashboard-cards {
     display: flex;
     gap: 20px;
@@ -84,7 +81,6 @@ h1 {
 .shadow { box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05); }
 .metric { font-size: 28px; font-weight: bold; color: var(--primary-color); margin: 10px 0 0 0; }
 
-/* Tabla */
 .table-responsive {
     overflow-x: auto;
     background: white;
@@ -103,7 +99,7 @@ th { background-color: #f1f5f9; color: var(--primary-color); font-weight: 600; }
 tr:hover { background-color: #f8fafc; }
 .amount { font-weight: bold; color: #0f766e; }
 
-/* Acciones CRUD dentro de la tabla */
+
 .btn-action {
     padding: 6px 12px;
     border-radius: 4px;

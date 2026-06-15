@@ -37,7 +37,6 @@ def obtener_registros(ano=None, departamento=None, municipio=None):
     cursor.execute(query, parametros)
     registros = cursor.fetchall()
     
-    # Análisis de datos: Cálculo del total recaudado en la consulta actual
     total_recaudado = sum(int(reg[4]) for reg in registros if reg[4] is not None)
     
     cursor.close()
@@ -90,9 +89,6 @@ def eliminar_registro(id_registro):
         cursor.close()
         conn.close()
 
-# ==========================================
-#  CONSULTAS NUEVAS PARA FILTROS INTELIGENTES
-# ==========================================
 
 def obtener_lista_anos():
     """Trae todos los años únicos de la base de datos ordenados de mayor a menor."""

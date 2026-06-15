@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for, session, j
 from modelo import crud
 
 app = Flask(__name__)
-# Llave de seguridad requerida para firmar las cookies de sesión del usuario
+
 app.secret_key = 'proyecto_integrador_datos_colombia_2026'
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -15,7 +15,7 @@ def login():
         # Validación con la base de datos local
         user = crud.validar_usuario(usuario, contrasena)
         if user:
-            session['usuario'] = user[1]  # Almacena el usuario administrador en la sesión
+            session['usuario'] = user[1]  
             return redirect(url_for('index'))
         else:
             error = "Usuario o contraseña incorrectos. Acceso denegado."
@@ -24,12 +24,12 @@ def login():
 
 @app.route('/logout')
 def logout():
-    session.pop('usuario', None)  # Limpia la sesión del administrador
+    session.pop('usuario', None) 
     return redirect(url_for('login'))
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    # FILTRO DE SEGURIDAD: Si no ha iniciado sesión, redirige a la pantalla de login
+    
     if 'usuario' not in session:
         return redirect(url_for('login'))
         
@@ -37,10 +37,9 @@ def index():
     departamento = request.form.get('departamento')
     municipio = request.form.get('municipio')
     
-    # Obtener registros filtrados y total recaudado
+    
     registros, total_recaudado = crud.obtener_registros(ano, departamento, municipio)
     
-    # Cargar listas dinámicas desde SQL Server para los datalists
     lista_anos = crud.obtener_lista_anos()
     lista_deptos = crud.obtener_lista_departamentos()
     
