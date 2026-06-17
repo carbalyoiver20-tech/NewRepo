@@ -2,8 +2,8 @@
 
 ### 👥 Integrantes del Proyecto
 * **Yoiver Carbal Mancera**
-* [Nombre de Integrante 2]
-* [Nombre de Integrante 3]
+* ** Junior de la Hoz**
+* **Esneider Barrozo**
 
 ---
 
