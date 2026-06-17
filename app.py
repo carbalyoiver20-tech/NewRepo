@@ -2,7 +2,6 @@ from flask import Flask, render_template, request, redirect, url_for, session, j
 from modelo import crud
 import pyodbc
 import matplotlib
-# Configuración para evitar que matplotlib intente abrir ventanas en segundo plano
 matplotlib.use('Agg') 
 import matplotlib.pyplot as plt
 import io
@@ -23,7 +22,7 @@ def generar_grafica_base64(ano_filtro=None, depto_filtro=None, muni_filtro=None)
         )
         cursor = conexion.cursor()
         
-        # 1. Construir la consulta SQL con los filtros seleccionados
+
         query = """
             SELECT ano, SUM(CAST(totalimpuesto AS DECIMAL(38, 0))) as Total 
             FROM registros 
@@ -51,20 +50,19 @@ def generar_grafica_base64(ano_filtro=None, depto_filtro=None, muni_filtro=None)
         for fila in filas:
             if fila[0] is not None and fila[1] is not None:
                 anos.append(str(fila[0]))
-                totales.append(float(fila[1]) / 1000000) # Convertir a millones de pesos
-        
+                totales.append(float(fila[1]) / 1000000) 
         cursor.close()
         conexion.close()
         
-        # Si la búsqueda no arroja datos, no se dibuja gráfica
+        
         if not anos:
             return None
 
-        # 2. Diseñar la gráfica con Matplotlib
+        
         plt.figure(figsize=(7, 3.5))
         barras = plt.bar(anos, totales, color='#1d3557', edgecolor='black', width=0.4)
         
-        # Definir título dinámico basado en los filtros aplicados
+        
         if depto_filtro and muni_filtro:
             titulo = f"Recaudo en {muni_filtro} ({depto_filtro})"
         elif depto_filtro:
@@ -83,7 +81,7 @@ def generar_grafica_base64(ano_filtro=None, depto_filtro=None, muni_filtro=None)
             
         plt.tight_layout()
         
-        # 3. Guardar la gráfica en memoria binaria (Buffer) y codificarla a Base64
+        
         img_buffer = io.BytesIO()
         plt.savefig(img_buffer, format='png', bbox_inches='tight')
         img_buffer.seek(0)
@@ -102,7 +100,7 @@ def login():
         usuario = request.form['username']
         contrasena = request.form['password']
         
-        # Validación con la base de datos local
+        
         user = crud.validar_usuario(usuario, contrasena)
         if user:
             session['usuario'] = user[1]  
@@ -126,13 +124,13 @@ def index():
     departamento = request.form.get('departamento')
     municipio = request.form.get('municipio')
     
-    # Obtener los registros filtrados desde el módulo CRUD
+    
     registros, total_recaudado = crud.obtener_registros(ano, departamento, municipio)
     
     lista_anos = crud.obtener_lista_anos()
     lista_deptos = crud.obtener_lista_departamentos()
     
-    # LLAMADA CORREGIDA: Pasamos los filtros del usuario para recalcular el gráfico en vivo
+   
     grafica_data = generar_grafica_base64(ano, departamento, municipio)
     
     return render_template('index.html', 

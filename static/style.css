@@ -111,7 +111,7 @@ tr:hover { background-color: #f8fafc; }
 .edit { background-color: #fef3c7; color: #d97706; }
 .delete { background-color: #fee2e2; color: #dc2626; }
 
-/* Formularios de creación y edición */
+
 .form-container { max-width: 500px; margin: 40px auto; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
 .crud-form { display: flex; flex-direction: column; gap: 15px; }
 .crud-form label { font-weight: bold; color: var(--primary-color); }
