@@ -2,7 +2,7 @@
 
 ### 👥 Integrantes del Proyecto
 * **Yoiver Carbal Mancera**
-* ** Junior de la Hoz**
+* **Junior de la Hoz**
 * **Esneider Barrozo**
 
 ---
@@ -13,7 +13,7 @@ Para ingresar al panel administrativo, el sistema valida las credenciales contra
 
 | Enlace de Acceso Local | Usuario Administrador (User/Email) | Contraseña de Acceso |
 | :--- | :--- | :--- |
-| `http://localhost:5000/login` | `admin@impuestos.gov.co` | `admin123` |
+| `http://localhost:5000/login` | `admin` | `admin123` |
 
 ### 🔍 Filtro de Demostración en la Base de Datos:
 Una vez adentro del panel, use este filtro exacto para demostrar el funcionamiento del CRUD en tiempo real con datos consistentes y visualización de totales en los paneles:
